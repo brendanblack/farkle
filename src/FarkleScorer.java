@@ -35,17 +35,17 @@ public class FarkleScorer {
         }
 
         //3 pairs
-        else if (counts.size() == 3 & allValuesEqual(counts)) {
+        else if (counts.size() == 3 && allValuesEqual(counts)) {
             score += 1500;
         }
 
         //2 triplets
-        else if (counts.size() == 2 & allValuesEqual(counts)) {
+        else if (counts.size() == 2 && allValuesEqual(counts)) {
             score += 2500;
         }
 
         //4 of a kind and 2 of a kind
-        else if (counts.size() == 2 & counts.containsValue(2) & counts.containsValue(4)) {
+        else if (counts.size() == 2 && counts.containsValue(2) && counts.containsValue(4)) {
             score += 1500;
         }
 
