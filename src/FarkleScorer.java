@@ -20,7 +20,7 @@ public class FarkleScorer {
             int count = entry.getValue();
 
             if (count >= 3) {
-                score += (val == 1) ? 1000 : val * 100;
+                score += (val == 1) ? 300 : val * 100;
                 count -= 3;
             }
 
