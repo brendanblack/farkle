@@ -1,26 +1,8 @@
 import java.util.*;
 
-public class StandardFarkleScorer {
-    public static boolean isFarkle(List<Integer> dice) {
-        return calculateScore(dice) == 0;
-    }
+public class StandardFarkleScorer extends FarkleScorer {
 
-    private static boolean allValuesEqual(Map<Integer, Integer> counts) {
-        boolean allEqual = true;
-        Integer firstValue = null;
-
-        for (Integer value : counts.values()) {
-            if (firstValue == null) {
-                firstValue = value; // set reference value
-            } else if (!firstValue.equals(value)) {
-                allEqual = false;
-                break;
-            }
-        }
-        return allEqual;
-    }
-
-    public static int calculateScore(List<Integer> dice) {
+    public int calculateScore(List<Integer> dice) {
         Map<Integer, Integer> counts = getCounts(dice);
 
         int specialScore = scoreSpecialPatterns(counts);
@@ -29,15 +11,17 @@ public class StandardFarkleScorer {
         return scoreMultiplesAndSingles(counts);
     }
 
-    private static Map<Integer, Integer> getCounts(List<Integer> dice) {
-        Map<Integer, Integer> counts = new HashMap<>();
-        for (int die : dice) {
-            counts.put(die, counts.getOrDefault(die, 0) + 1);
-        }
-        return counts;
+
+    //TODO: implement
+    public List<Integer> chooseScoringDice(List<Integer> dice) {
+        return dice;
     }
 
-    private static int scoreSpecialPatterns(Map<Integer, Integer> counts) {
+    public String getName() {
+        return "Standard";
+    }
+
+    private int scoreSpecialPatterns(Map<Integer, Integer> counts) {
         if (counts.size() == 6) {
             return 1500; // 1–6 straight
         }
@@ -57,7 +41,7 @@ public class StandardFarkleScorer {
         return 0; // No special pattern
     }
 
-    private static int scoreMultiplesAndSingles(Map<Integer, Integer> counts) {
+    private int scoreMultiplesAndSingles(Map<Integer, Integer> counts) {
         int score = 0;
 
         for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
