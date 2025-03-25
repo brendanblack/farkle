@@ -17,8 +17,8 @@ public class Player {
         List<Integer> remainingDice = diceSet.roll();
 
         while (true) {
-            if (StandardFarkleScorer.isFarkle(remainingDice)) break;
-            int score = StandardFarkleScorer.calculateScore(remainingDice);
+            if (policy.getFarkleScorer().isFarkle(remainingDice)) break;
+            int score = policy.getFarkleScorer().calculateScore(remainingDice);
             runningTotal += score;
             if (!policy.shouldRollAgain(runningTotal, remainingDice)) break;
             remainingDice = diceSet.roll();
