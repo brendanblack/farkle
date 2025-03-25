@@ -56,18 +56,22 @@ public class FarkleScorer {
 
                 if (count == 6) {
                     score += 3000;
+                    count-= 6;
                 }
 
                 if (count == 5) {
                     score += 2000;
+                    count -= 5;
                 }
 
                 if (count == 4) {
                     score += 1000;
+                    count -= 4;
                 }
 
                 if (count == 3) {
                     score += (val == 1) ? 300 : val * 100;
+                    count -= 3;
                 }
 
                 if (val == 1) score += count * 100;
