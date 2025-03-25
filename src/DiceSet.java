@@ -10,7 +10,9 @@ public class DiceSet {
         }
     }
 
-    //TODO: setAside function?
+    public void setAside(List<Integer> diceToRemove) {
+        dice.removeIf(die -> diceToRemove.contains(die.getValue()));
+    }
 
     public List<Integer> roll() {
         for (Die die : dice) {
