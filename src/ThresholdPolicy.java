@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class ThresholdPolicy implements Policy {
-    private int threshold;
-    private FarkleScorer scorer;
+    private final int threshold;
+    private final FarkleScorer scorer;
 
     public ThresholdPolicy(int threshold) {
         this.threshold = threshold;

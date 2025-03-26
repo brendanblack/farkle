@@ -1,5 +1,5 @@
 public class Game {
-    private Player player;
+    private final Player player;
     private int turnCount;
     private static final int WINNING_SCORE = 10000;
 
