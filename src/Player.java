@@ -18,7 +18,10 @@ public class Player {
         List<Integer> remainingDice = diceSet.roll();
 
         while (true) {
-            if (scorer.isFarkle(remainingDice)) break;
+            if (scorer.isFarkle(remainingDice))  {
+                runningTotal = 0;
+                break;
+            }
 
             // set aside dice
             List<Integer> toSetAside = scorer.chooseScoringDice(remainingDice);
