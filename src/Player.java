@@ -2,11 +2,13 @@ import java.util.*;
 
 public class Player {
     private int totalScore;
-    private Policy policy;
+    private final Policy policy;
+    private final FarkleScorer scorer;
 
     public Player(Policy policy) {
         this.policy = policy;
         this.totalScore = 0;
+        this.scorer = policy.getFarkleScorer();
     }
 
     //TODO: Set aside scored dice after each turn
@@ -17,8 +19,8 @@ public class Player {
         List<Integer> remainingDice = diceSet.roll();
 
         while (true) {
-            if (policy.getFarkleScorer().isFarkle(remainingDice)) break;
-            int score = policy.getFarkleScorer().calculateScore(remainingDice);
+            if (scorer.isFarkle(remainingDice)) break;
+            int score = scorer.calculateScore(remainingDice);
             runningTotal += score;
             if (!policy.shouldRollAgain(runningTotal, remainingDice)) break;
             remainingDice = diceSet.roll();
