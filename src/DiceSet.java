@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class DiceSet {
-    private List<Die> final dice;
+    private final List<Die> dice;
 
     public DiceSet() {
         dice = new ArrayList<>();
