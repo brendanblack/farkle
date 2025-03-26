@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class ThresholdPolicySimulator extends FarkleSimulator {
-    final static int NUM_POLICIES = 100;
-    final static int LOWER_THRESHOLD_LIMIT = 400;
-    final static int UPPER_THRESHOLD_LIMIT = 4000;
+    final static int NUM_POLICIES = 70;
+    final static int LOWER_THRESHOLD_LIMIT = 0;
+    final static int UPPER_THRESHOLD_LIMIT = 7000;
 
     public ThresholdPolicySimulator(List<Policy> policies, int numGames) {
         super(policies, numGames);

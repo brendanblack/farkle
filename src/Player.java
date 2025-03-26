@@ -32,6 +32,7 @@ public class Player {
             int score = scorer.calculateScore(toSetAside);
             runningTotal += score;
 
+
             // If all dice were scoring dice, reset diceSet (Hot Dice rule)
             if (diceSet.getValues().isEmpty()) {
                 diceSet = new DiceSet();  // reset dice

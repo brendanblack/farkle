@@ -20,11 +20,9 @@ public abstract class FarkleScorer {
         return counts;
     }
 
-    protected boolean allValuesEqual(Map<Integer, Integer> counts) {
-        Integer first = null;
+    protected boolean allValuesEqual(Map<Integer, Integer> counts, int number) {
         for (int value : counts.values()) {
-            if (first == null) first = value;
-            else if (!first.equals(value)) return false;
+            if (number!=value) return false;
         }
         return true;
     }
