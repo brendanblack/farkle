@@ -12,9 +12,33 @@ public class StandardFarkleScorer extends FarkleScorer {
     }
 
 
-    //TODO: implement
     public List<Integer> chooseScoringDice(List<Integer> dice) {
-        return dice;
+        Map<Integer, Integer> counts = getCounts(dice);
+        List<Integer> scoringDice = new ArrayList<>();
+
+        // return all dice case
+        if (scoreSpecialPatterns(counts) != 0) {
+            return dice;
+        }
+
+        // other cases
+        for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
+            int val = entry.getKey();
+            int count = entry.getValue();
+
+            //sets of 3
+            if (count >= 3) {
+                scoringDice.addAll(Collections.nCopies(count, val));
+                count = 0;
+            }
+
+            // Remaining 1s and 5s
+            if (val == 1 || val == 5) {
+                scoringDice.addAll(Collections.nCopies(count, val));
+            }
+        }
+
+        return scoringDice;
     }
 
     public String getName() {
@@ -23,7 +47,7 @@ public class StandardFarkleScorer extends FarkleScorer {
 
     private int scoreSpecialPatterns(Map<Integer, Integer> counts) {
         if (counts.size() == 6) {
-            return 1500; // 1–6 straight
+            return 1500;// 1–6 straight
         }
 
         if (counts.size() == 3 && allValuesEqual(counts)) {
