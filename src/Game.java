@@ -9,6 +9,8 @@ public class Game {
     }
 
     public void play() {
+
+        //don't count score until player scores over 500 in one turn
         while (player.getTotalScore()<500) {
             player.setScore(0);
             int score = player.takeTurn();
@@ -16,6 +18,7 @@ public class Game {
             turnCount++;
         }
 
+        //begin accumulating score once player has scored 500 in one turn
         while (player.getTotalScore() < WINNING_SCORE) {
             int score = player.takeTurn();
             player.addToScore(score);

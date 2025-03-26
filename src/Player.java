@@ -29,7 +29,7 @@ public class Player {
             List<Integer> toSetAside = setAsideDice(remainingDice, diceSet);
             remainingDice = diceSet.getValues();
 
-            // get score
+            // get score and update running total
             int score = scorer.calculateScore(toSetAside);
             runningTotal += score;
 
