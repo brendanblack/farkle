@@ -9,6 +9,13 @@ public class Game {
     }
 
     public void play() {
+        while (player.getTotalScore()<500) {
+            player.setScore(0);
+            int score = player.takeTurn();
+            player.addToScore(score);
+            turnCount++;
+        }
+
         while (player.getTotalScore() < WINNING_SCORE) {
             int score = player.takeTurn();
             player.addToScore(score);

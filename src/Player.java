@@ -45,6 +45,8 @@ public class Player {
         totalScore += score;
     }
 
+    public void setScore(int score) { totalScore = score; }
+
     public int getTotalScore() {
         return totalScore;
     }
