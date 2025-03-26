@@ -25,19 +25,23 @@ public class Player {
                 break;
             }
 
-            // set aside dice and update remaining dice
+            // set aside dice
             List<Integer> toSetAside = setAsideDice(remainingDice, diceSet);
-            remainingDice = diceSet.getValues();
 
             // get score and update running total
             int score = scorer.calculateScore(toSetAside);
             runningTotal += score;
 
+            // If all dice were scoring dice, reset diceSet (Hot Dice rule)
+            if (diceSet.getValues().isEmpty()) {
+                diceSet = new DiceSet();  // reset dice
+                remainingDice = diceSet.roll();
+            } else {
+                remainingDice = diceSet.roll();
+            }
+
             // check if we should stop
             if (!policy.shouldRollAgain(runningTotal, remainingDice)) break;
-
-            // roll remaining dice
-            remainingDice = diceSet.roll();
         }
 
         return runningTotal;
