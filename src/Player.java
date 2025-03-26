@@ -18,14 +18,16 @@ public class Player {
         List<Integer> remainingDice = diceSet.roll();
 
         while (true) {
+
+            //check for farkle
             if (scorer.isFarkle(remainingDice))  {
                 runningTotal = 0;
                 break;
             }
 
-            // set aside dice
-            List<Integer> toSetAside = scorer.chooseScoringDice(remainingDice);
-            diceSet.setAside(toSetAside);
+            // set aside dice and update remaining dice
+            List<Integer> toSetAside = setAsideDice(remainingDice, diceSet);
+            remainingDice = diceSet.getValues();
 
             // get score
             int score = scorer.calculateScore(toSetAside);
@@ -39,6 +41,12 @@ public class Player {
         }
 
         return runningTotal;
+    }
+
+    private List<Integer> setAsideDice(List<Integer> remainingDice, DiceSet diceSet) {
+        List<Integer> toSetAside = scorer.chooseScoringDice(remainingDice);
+        diceSet.setAside(toSetAside);
+        return toSetAside;
     }
 
     public void addToScore(int score) {
