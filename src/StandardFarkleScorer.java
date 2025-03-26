@@ -26,14 +26,9 @@ public class StandardFarkleScorer extends FarkleScorer {
             int val = entry.getKey();
             int count = entry.getValue();
 
-            //sets of 3
             if (count >= 3) {
                 scoringDice.addAll(Collections.nCopies(count, val));
-                count = 0;
-            }
-
-            // Remaining 1s and 5s
-            if (val == 1 || val == 5) {
+            } else if (val == 1 || val == 5) {
                 scoringDice.addAll(Collections.nCopies(count, val));
             }
         }
@@ -50,11 +45,11 @@ public class StandardFarkleScorer extends FarkleScorer {
             return 1500;// 1–6 straight
         }
 
-        if (counts.size() == 3 && allValuesEqual(counts)) {
+        if (counts.size() == 3 && allValuesEqual(counts, 2)) {
             return 1500; // 3 pairs
         }
 
-        if (counts.size() == 2 && allValuesEqual(counts)) {
+        if (counts.size() == 2 && allValuesEqual(counts, 3)) {
             return 2500; // 2 triplets
         }
 
