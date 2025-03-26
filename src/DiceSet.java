@@ -11,7 +11,14 @@ public class DiceSet {
     }
 
     public void setAside(List<Integer> diceToRemove) {
-        dice.removeIf(die -> diceToRemove.contains(die.getValue()));
+        for (Integer val : diceToRemove) {
+            for (int i = 0; i < dice.size(); i++) {
+                if (dice.get(i).getValue() == val) {
+                    dice.remove(i);
+                    break;
+                }
+            }
+        }
     }
 
     public List<Integer> roll() {
