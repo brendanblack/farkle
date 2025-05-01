@@ -65,7 +65,7 @@ public class ExpectedRewardDP {
                 double score = pointColumnIndex * POINT_INCREMENT;
                 double ev = memoTable[diceNum-1][pointColumnIndex-1];
                 if (Math.abs(ev - score) < .001) {
-                    System.out.println("Keep rolling with " + diceNum + " dice if you have under " + score + " points.");
+                    System.out.println("Keep rolling with " + diceNum + " dice if you have under " + score + " points in your running total.");
                     break;
                 }
             }
