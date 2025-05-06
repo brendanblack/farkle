@@ -45,7 +45,6 @@ public class ThresholdPolicySimulator extends FarkleSimulator {
         return new double[] { avgTurns, avgPointsPerTurn };
     }
 
-
     public void runSimulations() {
         populatePolicies();
         List<Double> avgTurnsList = new ArrayList<>();

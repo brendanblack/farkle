@@ -57,7 +57,7 @@ public class StandardFarkleScorer extends FarkleScorer {
             return 1500; // 4 of a kind + pair
         }
 
-        return 0; // No special pattern
+        return 0; //no special pattern
     }
 
     private int scoreMultiplesAndSingles(Map<Integer, Integer> counts) {

@@ -1,3 +1,6 @@
+
+// this class represents one full game of Farkle for a single player. 
+// it tracks how many turns it takes to get to 10,000 points. 
 public class Game {
     private final Player player;
     private int turnCount;
