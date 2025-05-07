@@ -1,31 +1,10 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class ThresholdPolicySimulator extends FarkleSimulator {
-    final static int NUM_POLICIES = 100;
-    final static int LOWER_THRESHOLD_LIMIT = 0;
-    final static int UPPER_THRESHOLD_LIMIT = 5000;
-
-    public ThresholdPolicySimulator(List<Policy> policies, int numGames) {
+public class ExpectedRewardValidationSimulator extends FarkleSimulator {
+    public ExpectedRewardValidationSimulator(List<Policy> policies, int numGames) {
         super(policies, numGames);
-    }
-
-    private List<Integer> getThresholdNumbers() {
-        List<Integer> thresholdsList = new ArrayList<>();
-        int thresholdRange = UPPER_THRESHOLD_LIMIT - LOWER_THRESHOLD_LIMIT;
-
-        for (int i = 0; i < NUM_POLICIES; i++) {
-            int threshold = LOWER_THRESHOLD_LIMIT + (thresholdRange * i / (NUM_POLICIES - 1));
-            thresholdsList.add(threshold);
-        }
-
-        return thresholdsList;
-    }
-
-    private void populatePolicies() {
-        List<Integer> thresholdNumbers = getThresholdNumbers();
-        for (Integer i : thresholdNumbers) {
-            policies.add(new ThresholdPolicy(i));
-        }
     }
 
     private double[] simulatePolicy(Policy policy) {
@@ -47,7 +26,6 @@ public class ThresholdPolicySimulator extends FarkleSimulator {
 
 
     public void runSimulations() {
-        populatePolicies();
         List<Double> avgTurnsList = new ArrayList<>();
         List<Double> avgPointsPerTurnList = new ArrayList<>();
 
@@ -71,13 +49,13 @@ public class ThresholdPolicySimulator extends FarkleSimulator {
     }
 
     private void printPolicyResults(List<Policy> policies, List<Double> avgTurnsList, List<Double> avgPointsPerTurnList) {
-        int lowestIndex = findIndexOfMin(avgTurnsList);
-        System.out.println("Threshold policy with the lowest average turns: " + policies.get(lowestIndex).getName());
+        int lowestIndex = findIndexOfMax(avgTurnsList);
+        System.out.println(policies.get(lowestIndex).getName());
         System.out.println("  Avg Turns: " + avgTurnsList.get(lowestIndex));
         System.out.println("  Avg Points/Turn: " + avgPointsPerTurnList.get(lowestIndex));
 
         int highestIndex = findIndexOfMax(avgPointsPerTurnList);
-        System.out.println("Threshold policy with the highest avg points/turn: " + policies.get(highestIndex).getName());
+        System.out.println(policies.get(highestIndex).getName());
         System.out.println("  Avg Turns: " + avgTurnsList.get(highestIndex));
         System.out.println("  Avg Points/Turn: " + avgPointsPerTurnList.get(highestIndex));
     }

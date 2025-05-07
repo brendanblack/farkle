@@ -19,7 +19,7 @@ public class ExpectedRewardDP {
     /**
      * This is the meat of the whole thing. A bottom-up dynamic programming approach. Basically, instead of starting
      * at a given (dice number, point value), trying to brute force every path and calculate a weighted average
-     * (making my computer shit itself in the process), this method starts all the way at the maximum possible score
+     * (which just ran indefinitely), this method starts all the way at the maximum possible score
      * of 10,000 (the 'bottom' of the recursion tree). If we say that the expected reward of rolling when you have 10k
      * point is 0 (essentially limiting recursion to the maximum possible score achievable in the game),
      * this creates a 'base case' for a recursive algorithm. The bottom-up DP approach starts at this base case and
@@ -73,7 +73,7 @@ public class ExpectedRewardDP {
     }
 
     /**
-     * Below are the helper methods that I made so this whole thing is less shitty and more readable
+     * Below are the helper methods that I made so this whole thing is more readable
      */
 
     //gets the probability of a given roll occurring
