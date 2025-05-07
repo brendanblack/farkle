@@ -28,9 +28,7 @@ public class ExpectedRewardDP {
      * we've seen an expected reward for a certain (dice number, point value), we don't need to recurse downward to
      * find it again!
      *
-     * This means the algorithm runs in linear time instead of exponential time, which makes my computer very happy!
-     *
-     * I AM THE KING OF FARKLE
+     * This means the algorithm runs in linear time instead of exponential time!
      *
      * Here's the youtube video I used to get the idea.
      * https://www.youtube.com/watch?v=OQ5jsbhAv_M
