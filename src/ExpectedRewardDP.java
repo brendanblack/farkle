@@ -20,9 +20,8 @@ public class ExpectedRewardDP {
      * This is the meat of the whole thing. A bottom-up dynamic programming approach. Basically, instead of starting
      * at a given (dice number, point value), trying to brute force every path and calculate a weighted average
      * (which just ran indefinitely), this method starts all the way at the maximum possible score
-     * of 10,000 (the 'bottom' of the recursion tree). If we say that the expected reward of rolling when you have 10k
-     * point is 0 (essentially limiting recursion to the maximum possible score achievable in the game),
-     * this creates a 'base case' for a recursive algorithm. The bottom-up DP approach starts at this base case and
+     * of 10,000. By considering this the bottom of the recursion tree, we are essentially limiting recursion to the
+     * maximum possible score achievable in the game. The bottom-up DP approach starts at this base case and
      * moves backward up the recursion tree, adding each expected reward calculation to our memoTable. This allows us to
      * simply look up the recursive expected rewards we need from the memoTable instead of recursing downward. After
      * we've seen an expected reward for a certain (dice number, point value), we don't need to recurse downward to
