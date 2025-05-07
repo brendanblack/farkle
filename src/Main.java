@@ -18,7 +18,7 @@ public class Main {
         ArrayList<Policy> list = new ArrayList<>();
         list.add(p0);
         list.add(p1);
-        ExpectedRewardValidationSimulator ervs = new ExpectedRewardValidationSimulator(list, 1000);
+        ExpectedRewardValidationSimulator ervs = new ExpectedRewardValidationSimulator(list, 10000);
         ervs.runSimulations();
 
 
